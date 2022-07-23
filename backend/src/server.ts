@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 import path from 'path';
 import routes from './routes';
+import { config } from '@config/config';
 
 dotenv.config();
 const app = express();
@@ -21,7 +22,7 @@ mongoose.connect(`mongodb+srv://deploy:${process.env.MONGO_DB_USER_DEPLOY_PSWD}@
 
 app.use('/api', routes);
 
-app.listen(process.env.PORT || 3001);
+app.listen(config.server.port);
 
 
 //TODO: create interfaces
